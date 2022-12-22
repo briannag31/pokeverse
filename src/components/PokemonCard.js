@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {Card} from "react-bootstrap"
 
-function PokemonCard({url, name, setPokemon}) {
+function PokemonCard({url, name, setPokemon, filteredPoke}) {
   const [poke, setPoke] = useState(null)
   async function fetchOnePoke(){
     try{
@@ -20,9 +20,10 @@ function PokemonCard({url, name, setPokemon}) {
     fetchOnePoke()
   }, [])
   return (
-   <Card>
+ 
+   <Card >
     <Card.Img src={poke?.sprites.front_default} alt={name} onClick={()=> console.log(poke.abilities[0].ability.name)}/>
-    {/* <Card.Title>{poke?.abilities[0].ability.name}</Card.Title> */}
+    <Card.Title>{name}</Card.Title>
     
     <Card.Text>
       <ul>
@@ -32,6 +33,7 @@ function PokemonCard({url, name, setPokemon}) {
       </ul>
     </Card.Text>
    </Card>
+  
   );
 }
 
